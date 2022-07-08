@@ -4,11 +4,13 @@ import style from "./botao.module.scss"
 type Params = {
     type?: "button" | "submit" | "reset" | undefined;
     children?: ReactFragment | undefined;
+    onClick?: () => void
 }
 
 const Botao: React.FC<Params> = (props:Params) =>{
+    const {type = "button", onClick} = props;
     return(
-        <button type={props.type} className={style.botao}>
+        <button onClick={onClick} type={props.type} className={style.botao}>
             {props.children}
         </button>
     )
